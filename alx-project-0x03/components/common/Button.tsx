@@ -1,27 +1,27 @@
-interface ButtonProps {
-  buttonLabel: string
-  buttonSize?: string
-  buttonBackgroundColor?: 'red' | 'blue' | 'orange' | 'green'
-  action?: () => void
-}
 
-const Button = ({ buttonLabel, buttonSize, buttonBackgroundColor, action }: ButtonProps) => {
+import React from "react";
+import { ButtonProps } from "@/interface";
 
-  const backgroundColorClass = buttonBackgroundColor ? {
-    red: 'bg-red-500',
-    blue: 'bg-blue-500',
-    orange: 'bg-orange-500',
-    green: 'bg-green-500',
-  }[buttonBackgroundColor] : 'bg-slate-500'
+const Button: React.FC<ButtonProps> = ({
+  action,
+  buttonLabel,
+  buttonBackgroundColor,
+}) => {
+  const bgColor =
+    buttonBackgroundColor === "blue"
+      ? "bg-blue-500"
+      : buttonBackgroundColor === "green"
+      ? "bg-green-500"
+      : "bg-orange-500";
 
   return (
-    <button 
-      onClick={action} 
-      className={`${backgroundColorClass} ${buttonSize} px-6 py-2 text-sm font-semibold rounded-lg hover:${backgroundColorClass}/50 transition duration-300 text-white`}
+    <button
+      onClick={action}
+      className={`${bgColor} text-white px-6 py-2 rounded-lg hover:opacity-90 transition`}
     >
       {buttonLabel}
     </button>
-  )
-}
+  );
+};
 
 export default Button;
