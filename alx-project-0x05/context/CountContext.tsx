@@ -1,13 +1,13 @@
 "use client";
 import { createContext, useContext, useState, ReactNode } from "react";
 
-type CountContextType = {
+interface CountContextProps {
   count: number;
   increment: () => void;
   decrement: () => void;
-};
+}
 
-const CountContext = createContext<CountContextType>({
+const CountContext = createContext<CountContextProps>({
   count: 0,
   increment: () => {},
   decrement: () => {},
